@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Furniture Store</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Notification Container -->
+    <div id="notification-container" aria-live="polite"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#collections">Collections</a>
+                <a href="#materials">Materials</a>
+            </div>
+            <!-- BRAND: Replace "YOUR BRAND" with your store name -->
+            <a href="#" class="nav-brand">YOUR BRAND</a>
+            <div class="nav-actions">
+                <a href="#visualizer">Visualizer</a>
+                <button id="cart-toggle" class="cart-btn">Cart (<span id="cart-count">0</span>)</button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="cart-sidebar" id="cart-sidebar">
+        <div class="cart-header">
+            <h3>Your Selection</h3>
+            <button id="close-cart" class="close-btn">×</button>
+        </div>
+        <div class="cart-items" id="cart-items"></div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cart-total-price">₹0</span>
+            </div>
+            <form id="checkout-form" class="checkout-form">
+                <input type="text" id="cust-name" placeholder="Full Name" required>
+                <input type="tel" id="cust-phone" placeholder="Mobile Number" required>
+                <textarea id="cust-address" placeholder="Delivery Address" required></textarea>
+                
+                <div class="location-wrapper">
+                    <button type="button" id="btn-location" class="btn-location">
+                        📍 Add My Location
+                    </button>
+                    <input type="hidden" id="cust-gps">
+                    <p id="location-status" class="status-text"></p>
+                </div>
+
+                <button type="submit" class="btn-primary form-submit">Send Order via WhatsApp</button>
+            </form>
+        </div>
+    </div>
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content fade-up">
+                <!-- BRAND: Replace headline and subtitle -->
+                <h1 class="display-title">Quality Furniture<br>for Every Space.</h1>
+                <p class="hero-subtitle">Crafted for homes, offices, and hotels.</p>
+                <a href="#collections" class="btn-primary pill-btn">Browse Collection</a>
+            </div>
+            <div class="hero-image-wrapper fade-up delay-1">
+                <!-- IMAGE: Replace with your own hero image -->
+                <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&q=80&w=2000" alt="Living Room" class="hero-img">
+            </div>
+        </section>
+
+        <section id="collections" class="section-padding fade-up">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-heading">Our Collection</h2>
+                    <p class="section-desc">Durable, well-crafted furniture for every room.</p>
+                </div>
+                
+                <div class="product-grid">
+
+                    <!-- PRODUCT: Edit data-name, data-price, image src, and description for each product -->
+
+                    <div class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&q=80&w=1000" alt="Sofa">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-text">
+                                <h3>Classic 3-Seat Sofa</h3>
+                                <p>Premium Fabric & Solid Wood</p>
+                            </div>
+                            <div class="card-action">
+                                <span class="price">₹4,50,000</span>
+                                <button class="btn-add" data-id="p1" data-name="Classic 3-Seat Sofa" data-price="450000">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?auto=format&fit=crop&q=80&w=1000" alt="Chair">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-text">
+                                <h3>Lounge Armchair</h3>
+                                <p>Velvet Upholstery & Brass Legs</p>
+                            </div>
+                            <div class="card-action">
+                                <span class="price">₹1,85,000</span>
+                                <button class="btn-add" data-id="p2" data-name="Lounge Armchair" data-price="185000">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&q=80&w=1000" alt="Sectional Sofa">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-text">
+                                <h3>L-Shape Sectional</h3>
+                                <p>Modular & Stain-Resistant</p>
+                            </div>
+                            <div class="card-action">
+                                <span class="price">₹6,20,000</span>
+                                <button class="btn-add" data-id="p3" data-name="L-Shape Sectional" data-price="620000">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&q=80&w=1000" alt="Dining Table">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-text">
+                                <h3>Dining Table Set</h3>
+                                <p>Solid Teak — Seats 6</p>
+                            </div>
+                            <div class="card-action">
+                                <span class="price">₹3,80,000</span>
+                                <button class="btn-add" data-id="p4" data-name="Dining Table Set" data-price="380000">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1505693314120-0d443867891c?auto=format&fit=crop&q=80&w=1000" alt="Bed Frame">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-text">
+                                <h3>King Bed Frame</h3>
+                                <p>Upholstered Headboard & Oak</p>
+                            </div>
+                            <div class="card-action">
+                                <span class="price">₹2,95,000</span>
+                                <button class="btn-add" data-id="p5" data-name="King Bed Frame" data-price="295000">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1518455027359-f3f8164ba6bd?auto=format&fit=crop&q=80&w=1000" alt="Coffee Table">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-text">
+                                <h3>Marble Coffee Table</h3>
+                                <p>Carrara Marble & Brass Base</p>
+                            </div>
+                            <div class="card-action">
+                                <span class="price">₹1,40,000</span>
+                                <button class="btn-add" data-id="p6" data-name="Marble Coffee Table" data-price="140000">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&q=80&w=1000" alt="Bookshelf">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-text">
+                                <h3>Open Bookshelf</h3>
+                                <p>Walnut Veneer — 5 Shelves</p>
+                            </div>
+                            <div class="card-action">
+                                <span class="price">₹95,000</span>
+                                <button class="btn-add" data-id="p7" data-name="Open Bookshelf" data-price="95000">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-img">
+                            <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&q=80&w=1000" alt="Office Chair">
+                        </div>
+                        <div class="card-content">
+                            <div class="card-text">
+                                <h3>Ergonomic Office Chair</h3>
+                                <p>Mesh Back & Lumbar Support</p>
+                            </div>
+                            <div class="card-action">
+                                <span class="price">₹75,000</span>
+                                <button class="btn-add" data-id="p8" data-name="Ergonomic Office Chair" data-price="75000">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <section id="materials" class="section-padding bg-alt fade-up">
+            <div class="container layout-split">
+                <div class="split-text">
+                    <h2 class="section-heading">Materials We Use</h2>
+                    <p class="section-desc">Responsibly sourced, built to last for years.</p>
+                    
+                    <div class="material-toggles">
+                        <button class="mat-btn active" data-type="marble">Carrara Marble</button>
+                        <button class="mat-btn" data-type="walnut">Walnut Wood</button>
+                        <button class="mat-btn" data-type="velvet">Navy Velvet</button>
+                    </div>
+                </div>
+                <div class="split-image">
+                    <!-- IMAGE: Replace with your own material images in script.js → materials object -->
+                    <img id="mat-preview-img" src="https://images.unsplash.com/photo-1629285483773-6b5cde2171d7?auto=format&fit=crop&q=80&w=1000" alt="Material" class="rounded-img">
+                </div>
+            </div>
+        </section>
+
+        <section id="visualizer" class="section-padding fade-up">
+            <div class="container">
+                <div class="section-header text-center">
+                    <h2 class="section-heading">See It In Your Space</h2>
+                    <p class="section-desc">Preview different room settings and styles.</p>
+                </div>
+                
+                <div class="visualizer-wrapper">
+                    <!-- IMAGE: Replace visualizer images in script.js → visualizerDB object -->
+                    <img id="vis-image" src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=2000" alt="Room View">
+                    
+                    <div class="vis-controls">
+                        <div class="control-col">
+                            <label>Lighting</label>
+                            <select id="vis-mood" class="clean-select">
+                                <option value="bright">Bright & Airy</option>
+                                <option value="evening">Evening Warmth</option>
+                            </select>
+                        </div>
+                        <div class="control-col">
+                            <label>Room</label>
+                            <select id="vis-room" class="clean-select">
+                                <option value="living">Living Room</option>
+                                <option value="dining">Dining Room</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- BRAND: Replace store name, location, and WhatsApp number -->
+    <footer class="site-footer">
+        <div class="container text-center">
+            <h2 class="footer-brand">YOUR BRAND</h2>
+            <p>City, State, Country</p>
+            <div class="footer-links">
+                <!-- CONTACT: Replace with your WhatsApp number (country code + number, no +) -->
+                <a href="https://wa.me/91XXXXXXXXXX">WhatsApp Us: +91 XXXXXXXXXX</a>
+            </div>
+            <p class="copyright">© 2026 Your Store Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
